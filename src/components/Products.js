@@ -35,10 +35,38 @@ const FEATURES = [
 ];
 
 const ROADMAP = [
-  { phase: '01', label: 'Manufacturing', sub: 'Warehouse Management', icon: '🏭', status: 'active' },
-  { phase: '02', label: 'Healthcare',    sub: 'Clinical Operations',  icon: '🏥', status: 'upcoming' },
-  { phase: '03', label: 'Retail',        sub: 'Supply Chain & Ops',   icon: '🛒', status: 'upcoming' },
-  { phase: '04', label: 'Finance',       sub: 'Process Compliance',   icon: '💼', status: 'upcoming' },
+  {
+    tag: 'Current Focus',
+    label: 'Manufacturing',
+    sub: 'Warehouse Management',
+    desc: 'Optimizing inventory movement, warehouse orchestration, and execution efficiency.',
+    icon: '🏭',
+    status: 'active',
+  },
+  {
+    tag: 'Next Vertical',
+    label: 'Healthcare',
+    sub: 'Clinical Operations',
+    desc: 'Streamlining patient-facing workflows, coordination, and operational handoffs.',
+    icon: '🏥',
+    status: 'upcoming',
+  },
+  {
+    tag: 'Expansion Area',
+    label: 'Retail',
+    sub: 'Supply Chain & Ops',
+    desc: 'Improving demand response, stock movement, and store-to-warehouse process automation.',
+    icon: '🛒',
+    status: 'upcoming',
+  },
+  {
+    tag: 'Future Horizon',
+    label: 'Finance',
+    sub: 'Process Compliance',
+    desc: 'Enhancing compliance workflows, approvals, and operational traceability with AI.',
+    icon: '💼',
+    status: 'upcoming',
+  },
 ];
 
 export default function Products() {
@@ -75,9 +103,7 @@ export default function Products() {
               Process Automation for the AI Era
             </p>
             <p className="products__hero-desc">
-              iProcessAI autonomously discovers the complete set of processes needed for any project,
-              generates intelligent automation workflows, and continuously optimizes them. Starting with
-              Manufacturing Warehouse Management, we're systematically transforming operations across industries.
+                          iProcessAI eliminates operational bottlenecks by autonomously discovering and automating end-to-end industrial workflows. While our technology is industry-agnostic, we are currently focused on setting new efficiency standards in Manufacturing and Warehouse operations.
             </p>
             <div className="products__hero-actions">
               <a href="#contact" className="btn-primary">
@@ -151,16 +177,26 @@ export default function Products() {
 
         {/* Industry roadmap */}
         <div className="products__roadmap">
-          <h3 className="products__roadmap-title">Industry Expansion Roadmap</h3>
+          <div className="products__roadmap-header">
+            <h3 className="products__roadmap-title">Industry Expansion Roadmap</h3>
+            <p className="products__roadmap-copy">
+              We are building iProcessAI as a cross-industry automation platform, starting with
+              high-impact operational environments and expanding into adjacent domains.
+            </p>
+          </div>
+
           <div className="products__roadmap-items">
-            {ROADMAP.map(({ phase, label, sub, icon, status }) => (
-              <div key={phase} className={`products__roadmap-item products__roadmap-item--${status}`}>
-                <div className="products__roadmap-phase">{phase}</div>
-                <div className="products__roadmap-icon">{icon}</div>
+            {ROADMAP.map(({ tag, label, sub, desc, icon, status }) => (
+              <div key={label} className={`products__roadmap-item products__roadmap-item--${status}`}>
+                <div className={`products__roadmap-marker products__roadmap-marker--${status}`}>
+                  <div className="products__roadmap-icon">{icon}</div>
+                </div>
+                <span className={`products__roadmap-tag products__roadmap-tag--${status}`}>{tag}</span>
                 <div className="products__roadmap-text">
                   <span className="products__roadmap-label">{label}</span>
                   <span className="products__roadmap-sub">{sub}</span>
                 </div>
+                <p className="products__roadmap-desc">{desc}</p>
                 {status === 'active' && (
                   <span className="products__roadmap-badge">Active</span>
                 )}

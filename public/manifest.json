@@ -1,0 +1,15 @@
+{
+  "short_name": "NimAI",
+  "name": "NimAI — AI-Powered Solutions",
+  "icons": [
+    {
+      "src": "nimai_logo.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4f46e5",
+  "background_color": "#ffffff"
+}

@@ -6,6 +6,8 @@
 
 :root {
   --white: #ffffff;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-elevated: rgba(255, 255, 255, 0.94);
   --bg-light: #f5f7ff;
   --bg-card: #f0f3ff;
   --navy: #0a0a2e;
@@ -18,12 +20,15 @@
   --text-secondary: #4a4a6a;
   --text-muted: #9090b0;
   --border: #e2e8f0;
+  --border-strong: rgba(79, 70, 229, 0.16);
   --gradient-main: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
   --gradient-alt: linear-gradient(135deg, #8b5cf6 0%, #4f46e5 100%);
   --gradient-soft: linear-gradient(135deg, #f0f3ff 0%, #e8efff 100%);
   --shadow-sm: 0 2px 8px rgba(79, 70, 229, 0.08);
   --shadow-md: 0 8px 32px rgba(79, 70, 229, 0.12);
   --shadow-lg: 0 20px 60px rgba(79, 70, 229, 0.18);
+  --shadow-card: 0 16px 40px rgba(15, 15, 45, 0.08);
+  --shadow-xl: 0 28px 80px rgba(15, 15, 45, 0.14);
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
@@ -38,7 +43,10 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  background-color: var(--white);
+  background:
+    radial-gradient(circle at top left, rgba(79, 70, 229, 0.06), transparent 28%),
+    radial-gradient(circle at top right, rgba(6, 182, 212, 0.06), transparent 22%),
+    linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -52,25 +60,27 @@ img { max-width: 100%; height: auto; }
 button { cursor: pointer; border: none; outline: none; font-family: inherit; }
 
 .section-wrapper {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 clamp(18px, 3vw, 32px);
 }
 
 .section-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(6, 182, 212, 0.08));
-  border: 1px solid rgba(79, 70, 229, 0.18);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(240, 243, 255, 0.9));
+  border: 1px solid rgba(79, 70, 229, 0.14);
   border-radius: 100px;
-  padding: 6px 16px;
-  font-size: 13px;
+  padding: 7px 16px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--indigo);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
 }
 
 .section-tag .dot {
@@ -106,38 +116,43 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   gap: 8px;
   background: var(--gradient-main);
   color: white;
-  padding: 14px 28px;
+  padding: 14px 26px;
   border-radius: 100px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   transition: all var(--transition);
-  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.35);
+  box-shadow: 0 12px 28px rgba(79, 70, 229, 0.26);
   white-space: nowrap;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(79, 70, 229, 0.5);
+  box-shadow: 0 18px 36px rgba(79, 70, 229, 0.34);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.72);
   color: var(--indigo);
   padding: 13px 27px;
   border-radius: 100px;
   font-size: 15px;
-  font-weight: 600;
-  border: 1.5px solid var(--indigo);
+  font-weight: 700;
+  border: 1.5px solid rgba(79, 70, 229, 0.4);
   transition: all var(--transition);
   white-space: nowrap;
+  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background: rgba(79, 70, 229, 0.06);
+  background: rgba(79, 70, 229, 0.08);
   transform: translateY(-2px);
+}
+
+section[id] {
+  scroll-margin-top: 110px;
 }
 
 @keyframes fadeInUp {

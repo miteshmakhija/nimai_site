@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Contact.css';
 
+const CONTACT_EMAIL = 'connect@nimai.ai';
+
 const TOPICS = [
   'Data & AI Consulting',
   'Architecture Review',
@@ -13,6 +15,12 @@ const TOPICS = [
   'Other',
 ];
 
+const CONTACT_HIGHLIGHTS = [
+  'Strategy, architecture, and delivery discussions',
+  'Data, AI, cloud, and iProcessAI inquiries',
+  'Quick response for demos and consulting requests',
+];
+
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', company: '', topic: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -23,6 +31,21 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const subject = encodeURIComponent(`NimAI Inquiry - ${form.topic}`);
+    const body = encodeURIComponent(
+      [
+        `Name: ${form.name}`,
+        `Email: ${form.email}`,
+        `Company: ${form.company || 'Not provided'}`,
+        `Area of Interest: ${form.topic}`,
+        '',
+        'Message:',
+        form.message,
+      ].join('\n')
+    );
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
@@ -44,16 +67,26 @@ export default function Contact() {
               <span className="gradient-text">Extraordinary Together</span>
             </h2>
             <p className="contact__desc">
-              Whether you're looking to modernize your data stack, build an AI-powered product, 
-              or explore what iProcessAI can do for your operations — our team is ready to help.
+              Whether you're planning a new AI initiative, modernizing your data platform,
+              or evaluating iProcessAI for operations transformation, NimAI is ready to help
+              you move from idea to execution.
             </p>
+
+            <div className="contact__highlights">
+              {CONTACT_HIGHLIGHTS.map((item) => (
+                <div key={item} className="contact__highlight-item">
+                  <span className="contact__highlight-check">✓</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
 
             <div className="contact__info-items">
               <div className="contact__info-item">
                 <div className="contact__info-icon">📧</div>
                 <div>
                   <span className="contact__info-label">Email Us</span>
-                  <a href="mailto:hello@nimai.ai" className="contact__info-value">hello@nimai.ai</a>
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="contact__info-value">{CONTACT_EMAIL}</a>
                 </div>
               </div>
               <div className="contact__info-item">
@@ -63,24 +96,12 @@ export default function Contact() {
                   <a href="https://nimai.ai" className="contact__info-value">nimai.ai</a>
                 </div>
               </div>
-              <div className="contact__info-item">
-                <div className="contact__info-icon">🤝</div>
-                <div>
-                  <span className="contact__info-label">Partnership</span>
-                  <a href="mailto:partners@nimai.ai" className="contact__info-value">partners@nimai.ai</a>
-                </div>
-              </div>
             </div>
 
             <div className="contact__social">
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="contact__social-link" aria-label="LinkedIn">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
                   <path d="M20.447 20.452H17.2v-5.569c0-1.328-.024-3.037-1.852-3.037-1.854 0-2.137 1.446-2.137 2.94v5.666H9.964V9.756h3.115v1.495h.044c.434-.822 1.494-1.689 3.075-1.689 3.289 0 3.896 2.165 3.896 4.977v5.913h-.647zM5.337 8.26a1.81 1.81 0 1 1 0-3.619 1.81 1.81 0 0 1 0 3.619zM6.966 20.452H3.706V9.756h3.26v10.696zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="contact__social-link" aria-label="X / Twitter">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
               </a>
               <a href="https://github.com" target="_blank" rel="noreferrer" className="contact__social-link" aria-label="GitHub">
@@ -96,14 +117,25 @@ export default function Contact() {
             {submitted ? (
               <div className="contact__success">
                 <div className="contact__success-icon">✅</div>
-                <h3>Message Sent!</h3>
-                <p>Thank you for reaching out. Our team will get back to you within 24 hours.</p>
+                <h3>Email Draft Opened</h3>
+                <p>
+                  Your default mail app has been opened with a prefilled message to {CONTACT_EMAIL}.
+                  Send the email there to reach the NimAI team.
+                </p>
                 <button className="btn-primary" onClick={() => setSubmitted(false)}>
-                  Send Another Message
+                  Create Another Message
                 </button>
               </div>
             ) : (
               <form className="contact__form" onSubmit={handleSubmit}>
+                <div className="contact__form-header">
+                  <div>
+                    <p className="contact__form-tag">Start a conversation</p>
+                    <h3 className="contact__form-title">Tell us about your requirement</h3>
+                  </div>
+                  <span className="contact__form-badge">Response within 1 business day</span>
+                </div>
+
                 <div className="contact__form-row">
                   <div className="contact__field">
                     <label htmlFor="name">Full Name *</label>

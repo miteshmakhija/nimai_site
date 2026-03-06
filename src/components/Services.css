@@ -1,6 +1,6 @@
 .services {
   position: relative;
-  padding: 100px 0;
+  padding: 120px 0;
   background: var(--bg-light);
   overflow: hidden;
 }
@@ -41,8 +41,9 @@
 .services__layout {
   display: grid;
   grid-template-columns: 340px 1fr;
-  gap: 24px;
+  gap: 28px;
   margin-bottom: 48px;
+  align-items: start;
 }
 
 /* Tabs */
@@ -50,14 +51,16 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  position: sticky;
+  top: 116px;
 }
 
 .services__tab {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: white;
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(79, 70, 229, 0.08);
   border-radius: var(--radius-md);
   padding: 16px 18px;
   text-align: left;
@@ -65,6 +68,8 @@
   transition: all var(--transition);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
 }
 
 .services__tab::before {
@@ -138,11 +143,13 @@
 
 /* Detail panel */
 .services__detail {
-  background: white;
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(79, 70, 229, 0.08);
   border-radius: var(--radius-lg);
   padding: 40px;
   animation: fadeInUp 0.4s ease both;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(14px);
 }
 
 .services__detail-header {
@@ -235,11 +242,12 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: white;
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(79, 70, 229, 0.08);
   border-radius: var(--radius-md);
   padding: 16px 20px;
   transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .services__feature:hover {
@@ -260,7 +268,7 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .services__layout { grid-template-columns: 1fr; }
-  .services__tabs { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .services__tabs { flex-direction: row; flex-wrap: wrap; gap: 8px; position: static; top: auto; }
   .services__tab { flex: 1; min-width: 140px; }
   .services__tab::before { top: 0; left: 0; right: 0; bottom: auto; width: auto; height: 3px; border-radius: 0 0 2px 2px; }
   .services__tab:hover { transform: none; }
@@ -270,7 +278,7 @@
 @media (max-width: 640px) {
   .services { padding: 72px 0; }
   .services__detail { padding: 24px; }
-  .services__tab { min-width: calc(50% - 4px); }
+  .services__tab { min-width: 100%; }
   .services__detail-header { flex-direction: column; gap: 12px; }
   .services__features { grid-template-columns: 1fr; }
 }

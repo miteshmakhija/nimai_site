@@ -6,7 +6,6 @@ const LINKS = {
   Company: [
     { label: 'About Us',  href: '#home' },
     { label: 'Careers',   href: '#contact' },
-    { label: 'Blog',      href: '#home' },
     { label: 'Contact',   href: '#contact' },
   ],
   Services: [
@@ -23,7 +22,6 @@ const LINKS = {
   ],
   Products: [
     { label: 'iProcessAI',            href: '#products' },
-    { label: 'Waitlist',              href: '#contact' },
     { label: 'Request a Demo',        href: '#contact' },
   ],
 };
@@ -39,10 +37,13 @@ export default function Footer() {
 
             {/* Brand */}
             <div className="footer__brand">
-              <img src={logo} alt="NimAI" className="footer__logo" />
+              <div className="footer__logo-shell">
+                <img src={logo} alt="NimAI" className="footer__logo" />
+              </div>
               <p className="footer__brand-desc">
-                Transforming businesses through the power of Data &amp; AI.
-                20+ years of expertise. World-class engineering. Trusted by B2B &amp; B2C leaders.
+                Empowering businesses with intelligent Data &amp; AI solutions.
+                Backed by 20+ years of expertise, NimAI delivers strategic consulting,
+                scalable engineering, and innovation trusted by both B2B and B2C organizations.
               </p>
               <div className="footer__tagline">
                 <span className="footer__tagline-dot" />

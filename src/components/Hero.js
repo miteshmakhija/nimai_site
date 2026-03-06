@@ -86,15 +86,15 @@ export default function Hero() {
             </div>
             <div className="hero__badge hero__badge--tr">
               <span className="hero__badge-icon">☁️</span>
-              <span>Cloud</span>
+              <span>Enterprise Cloud Solution</span>
             </div>
             <div className="hero__badge hero__badge--bl">
               <span className="hero__badge-icon">🔢</span>
-              <span>Data Eng.</span>
+              <span>Data Engineering</span>
             </div>
             <div className="hero__badge hero__badge--br">
               <span className="hero__badge-icon">⚙️</span>
-              <span>AI Ops</span>
+              <span>Product Development</span>
             </div>
           </div>
         </div>
