@@ -1,0 +1,9 @@
+.nimai-app {
+  min-height: 100vh;
+  background: var(--white);
+}
+
+main {
+  padding-top: 0;
+}
+
