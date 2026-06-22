@@ -1,0 +1,14 @@
+.nimai-app {
+  min-height: 100vh;
+  background: transparent;
+}
+
+main {
+  padding-top: 0;
+  position: relative;
+}
+
+main > section {
+  position: relative;
+}
+
