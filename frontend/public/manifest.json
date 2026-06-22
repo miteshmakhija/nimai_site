@@ -3,7 +3,7 @@
   "name": "NimAI — AI-Powered Solutions",
   "icons": [
     {
-      "src": "favicon-48x48.png",
+      "src": "favicon-48x48.png?v=2",
       "type": "image/png",
       "sizes": "48x48"
     },
@@ -15,6 +15,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#d97757",
-  "background_color": "#faf9f5"
+  "theme_color": "#2454d8",
+  "background_color": "#ffffff"
 }
